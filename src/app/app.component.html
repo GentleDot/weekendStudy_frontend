@@ -1,0 +1,11 @@
+<mat-form-field class="example-full-width">
+  <input type="text" placeholder="검색어를 입력하세요." matInput [formControl]="myControl" [matAutocomplete]="auto"
+         (ngModelChange)="onChangeSearchBox()"/>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
+
