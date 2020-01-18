@@ -1,19 +1,14 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {BaseService} from "./base.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class DbDataService {
+export class DbDataService extends BaseService{
+    static TEST_URL = '${environment.url}/tests';
 
-  constructor(private http: HttpClient) {
-  }
 
   async getData(query: string): Promise<any> {
-    return this.http.get<any[]>('http://localhost:9090/tests?query=' + query).toPromise().then(res => {
-      return res;
-    }).catch(err => {
-      return err;
-    });
+    return this.get(DbDataService.TEST_URL, {query : query});
   }
 }
